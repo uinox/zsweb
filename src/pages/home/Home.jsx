@@ -21,7 +21,7 @@ function Home(props) {
     } = props;
 
     useEffect(()=>{
-        fetch('/homeat')
+        fetch('/apis/homeat')
             .then(res=>res.json())
             .then(result=>{
                 const {Categories,Topics} = result;
@@ -36,10 +36,10 @@ function Home(props) {
         let url;
         switch (type) {
             case 'cate':
-                url =`/home?cate=${value}`;
+                url =`/apis/home?cate=${value}`;
                 break;
             case 'label':
-                url=`/home?label=${value}`;
+                url=`/apis/home?label=${value}`;
                 break;
             default:
         }

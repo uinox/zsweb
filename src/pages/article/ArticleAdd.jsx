@@ -46,7 +46,7 @@ class ArticleAdd extends Component {
                 formData.append('content',values.content.toHTML());
                 formData.append('label',values.label);
 
-                fetch("/topicat/add",{
+                fetch("/apis/topicat/add",{
                     method:"POST",
                     body:formData
 
@@ -62,7 +62,7 @@ class ArticleAdd extends Component {
 
     myUploadFn = (param) => {
 
-        const serverURL = '/upload';
+        const serverURL = '/apis/upload';
         const xhr = new XMLHttpRequest();
         const fd = new FormData();
 

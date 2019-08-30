@@ -9,41 +9,41 @@ import jsonp from 'jsonp';
 import {message} from "antd";
 
 //登录
-export const reqLogin = (name,password) => ajax('/loginat',{name,password},'POST');
+export const reqLogin = (name,password) => ajax('/apis/loginat',{name,password},'POST');
 
 //注册
-export const reqRegister = (user) => ajax('/register',user,'POST');
+export const reqRegister = (user) => ajax('/apis/register',user,'POST');
 
 //获取分类列表
-export const reqCategories = () => ajax('/categoryAt',{},'POST');
+export const reqCategories = () => ajax('/apis/categoryAt',{},'POST');
 
 //添加分类
-export const reqAddCategories = (cate,type) => ajax('/categoryAt',{'Name': cate,'Op':type},'POST');
+export const reqAddCategories = (cate,type) => ajax('/apis/categoryAt',{'Name': cate,'Op':type},'POST');
 
 //删除分类
-export const reqRemoveCategories = (id,type) => ajax('/categoryAt',{'Id': id,'Op':type},'POST');
+export const reqRemoveCategories = (id,type) => ajax('/apis/categoryAt',{'Id': id,'Op':type},'POST');
 
 //获取文章列表
-export const reqGetTopics = () => ajax('/topicat',{},);
+export const reqGetTopics = () => ajax('/apis/topicat',{},);
 
 
 //添加文章
-// export const reqAddTopic = (topic) => ajax('/topicat/add',{topic},'POST');
+// export const reqAddTopic = (topic) => ajax('/apis/topicat/add',{topic},'POST');
 
 //获取文章和评论
-export const reqViewTopic = (tid) => ajax(`/topicat/view/${tid}`);
+export const reqViewTopic = (tid) => ajax(`/apis/topicat/view/${tid}`);
 
 //编辑文章
-export const reqEditTopic = (tid) => ajax(`/topicat/edit?tid=${tid}`);
+export const reqEditTopic = (tid) => ajax(`/apis/topicat/edit?tid=${tid}`);
 
 //删除文章
-export const reqDeleteTopic = (id) => ajax(`/topicat/delete?tid=${id}`,{},'POST');
+export const reqDeleteTopic = (id) => ajax(`/apis/topicat/delete?tid=${id}`,{},'POST');
 
 //添加评论
-export const reqAddReply = (reply) => ajax('/replyat/add',reply,'POST');
+export const reqAddReply = (reply) => ajax('/apis/replyat/add',reply,'POST');
 
 //删除评论
-export const reqDeleteReply = (tid,rid) => ajax(`/replyat/delete?tid=${tid}&rid=${rid}`);
+export const reqDeleteReply = (tid,rid) => ajax(`/apis/replyat/delete?tid=${tid}&rid=${rid}`);
 
 
 

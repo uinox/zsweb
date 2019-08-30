@@ -1,0 +1,6 @@
+##ignore file##
+
+.idea
+.DS_Store
+.vscode
+node_modules

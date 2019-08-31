@@ -27,7 +27,7 @@ class RegisterForm extends React.Component {
                 const data={'name':name,'email':email,'password':password};
 
                 const result = await reqRegister(data);
-                console.log(result);
+
                 if(result){
                     this.setState({ loading: false });
                     if(result.Code === "301"){
@@ -35,7 +35,7 @@ class RegisterForm extends React.Component {
                     }else if(result.Code === "304"){
                         message.error('注册失败');
                     }else if(result.Code === "200"){
-                        console.log("sss");
+                       
                         message.success('注册成功，请登录!');
                         this.props.history.replace('/login');
                     }

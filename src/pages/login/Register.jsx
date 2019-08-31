@@ -6,13 +6,14 @@ import {
     Form,
     Input,
     Button,
-    message,
+    message, Spin,
 } from 'antd';
 
 class RegisterForm extends React.Component {
     state = {
         confirmDirty: false,
         autoCompleteResult: [],
+        loading: false,
     };
 
 
@@ -21,14 +22,25 @@ class RegisterForm extends React.Component {
         e.preventDefault();
         this.props.form.validateFieldsAndScroll(async (err, values) => {
             if (!err) {
+                this.setState({ loading: true });
                 const {name,email,password} = values;
                 const data={'name':name,'email':email,'password':password};
-                console.log(data);
+
                 const result = await reqRegister(data);
-                if(result.Code === "200"){
-                    message.success('注册成功，请登录!');
-                    this.props.history.replace('/login');
+                console.log(result);
+                if(result){
+                    this.setState({ loading: false });
+                    if(result.Code === "301"){
+                        message.error('此用户名已存在');
+                    }else if(result.Code === "304"){
+                        message.error('注册失败');
+                    }else if(result.Code === "200"){
+                        console.log("sss");
+                        message.success('注册成功，请登录!');
+                        this.props.history.replace('/login');
+                    }
                 }
+
             }
         });
     };
@@ -71,11 +83,11 @@ class RegisterForm extends React.Component {
         const formItemLayout = {
             labelCol: {
                 xs: { span: 24 },
-                sm: { span: 6 },
+                sm: { span: 24 },
             },
             wrapperCol: {
                 xs: { span: 24 },
-                sm: { span: 18 },
+                sm: { span: 24 },
             },
         };
         const tailFormItemLayout = {
@@ -85,8 +97,8 @@ class RegisterForm extends React.Component {
                     offset: 0,
                 },
                 sm: {
-                    span: 18,
-                    offset: 3,
+                    span: 24,
+                    offset: 0,
                 },
             },
         };
@@ -108,7 +120,7 @@ class RegisterForm extends React.Component {
                                 { max: 12, message: '用户名最多12位' },
                                 { pattern:/^[a-zA-Z0-9_]+$/,message:'用户名必须是英文、数字或下划线组成'},
                             ],
-                        })(<Input style={{width:'80%'}}/>)}
+                        })(<Input/>)}
                     </Form.Item>
                     <Form.Item label="邮箱">
                         {getFieldDecorator('email', {
@@ -122,7 +134,7 @@ class RegisterForm extends React.Component {
                                     message: '请输入您的邮箱!',
                                 },
                             ],
-                        })(<Input style={{width:'80%'}}/>)}
+                        })(<Input/>)}
                     </Form.Item>
                     <Form.Item label="密码" hasFeedback>
                         {getFieldDecorator('password', {
@@ -142,7 +154,7 @@ class RegisterForm extends React.Component {
                                     validator: this.validateToNextPassword,
                                 },
                             ],
-                        })(<Input.Password style={{width:'80%'}}/>)}
+                        })(<Input.Password/>)}
                     </Form.Item>
                     <Form.Item label="确认密码" hasFeedback>
                         {getFieldDecorator('confirm', {
@@ -155,17 +167,14 @@ class RegisterForm extends React.Component {
                                     validator: this.compareToFirstPassword,
                                 },
                             ],
-                        })(<Input.Password onBlur={this.handleConfirmBlur} style={{width:'80%'}}/>)}
+                        })(<Input.Password onBlur={this.handleConfirmBlur}/>)}
                     </Form.Item>
-                    {/*<Form.Item label="手机号码">
-                    {getFieldDecorator('phone', {
-                        rules: [{ required: false, message: '请输入您的的手机号!' }],
-                    })(<Input style={{width:'80%'}}/>)}
-                </Form.Item>*/}
                     <Form.Item {...tailFormItemLayout}>
-                        <Button type="primary" htmlType="submit" block>
-                            注册
-                        </Button>
+                        <Spin spinning={this.state.loading} delay={500}>
+                            <Button type="primary" htmlType="submit" block>
+                                注册
+                            </Button>
+                        </Spin>
                     </Form.Item>
                 </Form>
             </div>

@@ -36,10 +36,10 @@ function Home(props) {
         let url;
         switch (type) {
             case 'cate':
-                url =`/apis/home?cate=${value}`;
+                url =`/home?cate=${value}`;
                 break;
             case 'label':
-                url=`/apis/home?label=${value}`;
+                url=`/home?label=${value}`;
                 break;
             default:
         }

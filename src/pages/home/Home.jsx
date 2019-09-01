@@ -12,13 +12,13 @@ import ff2 from '../../assets/images/ff2.png';
 import ff3 from '../../assets/images/ff3.png';
 import ff4 from '../../assets/images/ff4.png';
 
-
 function Home(props) {
     const {
         categories,
         topics,
         dispatch,
     } = props;
+    console.log(props);
 
     useEffect(()=>{
         fetch('/apis/homeat')
@@ -138,10 +138,10 @@ function Home(props) {
 
 // export default Home;
 export default connect(
-    function mapStateToProps(state) {
+    (state)=> {
         return state;
     },
-    function mapDispatchToProps(dispatch) {
+   (dispatch)=> {
         return { dispatch };
     }
 )(Home);

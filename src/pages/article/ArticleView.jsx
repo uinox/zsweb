@@ -40,7 +40,7 @@ class ArticleView extends Component {
         const result = await reqViewTopic(tid);
         if(result){
             this.setState({topic:result.Topic});
-            this.setState({replies:result.Replies});
+            this.setState({replies:result.Replies.reverse()});
         }
     };
 
@@ -48,7 +48,7 @@ class ArticleView extends Component {
     addReply = async (reply) =>{
         const result = await reqAddReply(reply);
         if(result){
-            this.setState({replies:result})
+            this.setState({replies:result.reverse()})
         }
     };
 
@@ -56,7 +56,7 @@ class ArticleView extends Component {
     deleReply = async (tid,rid) =>{
         const result = await reqDeleteReply(tid,rid);
         if(result){
-            this.setState({replies:result});
+            this.setState({replies:result.reverse()});
         }
     };
 
@@ -150,7 +150,7 @@ class ArticleView extends Component {
                                     className="comment-list"
                                     header={`${replies.length} 回复`}
                                     itemLayout="horizontal"
-                                    dataSource={replies.reverse()}
+                                    dataSource={replies}
                                     pagination={{
                                         onChange: page => {
 

@@ -1,12 +1,12 @@
 import React from 'react';
-import { connect } from 'react-redux';
+// import { connect } from 'react-redux';
 import {BrowserRouter,Route,Switch} from 'react-router-dom';
 
 import Login from "./pages/login/Login";
 import Admin from "./pages/admin/Admin";
 import Register from "./pages/login/Register";
 
-function App(props){
+function App(){
   return (
     <BrowserRouter>
         <Route>
@@ -14,6 +14,7 @@ function App(props){
                 <Route path='/login' component={Login} />
                 <Route path='/register' component={Register} />
                 <Route path='/' component={Admin} />
+
             </Switch>
         </Route>
 
@@ -21,11 +22,4 @@ function App(props){
   );
 }
 
-export default connect(
-  function mapStateToProps(state) {
-      return state;
-  },
-  function mapDispatchToProps(dispatch) {
-      return { dispatch };
-  }
-)(App);
+export default App;

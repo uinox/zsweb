@@ -1,5 +1,5 @@
 import React, {Component} from 'react';
-import {Button, Form, Input,Table,Card,Icon,Row,Col} from 'antd';
+import {Button, Form, Input,Table,Icon,Row,Col} from 'antd';
 import {reqCategories,reqAddCategories,reqRemoveCategories} from '../../api/index';
 import LinkButton from "../../component/link-button";
 import './Category.less';
@@ -65,8 +65,8 @@ class Category extends Component{
                                     rules: [
                                         { required: true, message: '请输入类名!' },
                                         { min:2,message:'类名至少两位'},
-                                        { max:10,message:'类名至多十二位'},
-                                        { pattern:/[^/u4e00\-/u9fa5]+$/,message:'用户名必须是中文'}
+                                        { max:10,message:'类名至多十位'},
+                                        { pattern:/[/u4e00\-/u9fa5]{2,10}$/,message:'用户名必须是中文'}
                                     ],
                                 })(
                                     <Input
@@ -85,27 +85,24 @@ class Category extends Component{
                     </Form.Item>
                 </Form>
 
-                <Card title="分类列表">
-                    <Table
-                        bordered
-                        align="center"
-                        dataSource={categories}
-                        rowKey={record => record.Id}
-                    >
-                        <Column align="center" title="序号" dataIndex="Id" key="Id"
-                            render={(text,record,index)=>`${index+1}`}
-                        />
-                        <Column align="center" title="类名" dataIndex="Title" key="Title" />
-                        <Column align="center" title="文章总数" dataIndex="TopicCount" key="TopicCount"/>
-                        <Column align="center" title="操作" key="action"
-                            render={(dataIndex) => (
-                                <LinkButton onClick={()=>this.handleRemoveCate(dataIndex.Id)}>
-                                    删除
-                                </LinkButton>
-                            )}
-                        />
-                    </Table>
-                </Card>
+                <Table
+                    align="center"
+                    dataSource={categories}
+                    rowKey={record => record.Id}
+                >
+                    <Column align="center" title="序号" dataIndex="Id" key="Id"
+                        render={(text,record,index)=>`${index+1}`}
+                    />
+                    <Column align="center" title="类名" dataIndex="Title" key="Title" />
+                    <Column align="center" title="文章总数" dataIndex="TopicCount" key="TopicCount"/>
+                    <Column align="center" title="操作" key="action"
+                        render={(dataIndex) => (
+                            <LinkButton onClick={()=>this.handleRemoveCate(dataIndex.Id)}>
+                                删除
+                            </LinkButton>
+                        )}
+                    />
+                </Table>
 
             </div>
         );

@@ -202,7 +202,7 @@ class ArticleAdd extends Component {
                             <input className="article-add-file" type="file" ref="attachment"/>
                         </Form.Item>
                         <Form.Item style={{textAlign:"center"}}>
-                            <Button type="primary" htmlType="submit">
+                            <Button type="primary" htmlType="submit" block>
                                 添加文章
                             </Button>
                         </Form.Item>

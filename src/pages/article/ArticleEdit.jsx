@@ -96,8 +96,11 @@ class ArticleAdd extends Component {
     render() {
         const { getFieldDecorator } = this.props.form;
         const {categories} = this.state;
-        const {Labels,Title,Content,Category,Attachment} = this.state.topic;
-
+        const {Title,Content,Category,Attachment} = this.state.topic;
+        let {Labels} = this.state.topic;
+        if(Labels){
+            Labels = Labels.trim();
+        }
         const controls = [
 
             'undo', 'redo', 'separator',

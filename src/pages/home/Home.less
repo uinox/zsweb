@@ -2,15 +2,12 @@ nav{
     border: 1px solid #eee;
     background-color: #fff;
     text-align: center;
-    padding: 20px 0;
     margin-right: 10px;
-    border-radius:5px;
     ul{
         li{
             height: 30px;
-            line-height: 30px;
-            margin: 0 10px;
-            font-size: 12px;
+            //line-height: 30px;
+            margin: 10px 5px;
             cursor: pointer;
             border-bottom: 1px solid #eee;
         }
@@ -20,25 +17,18 @@ nav{
 main{
     border: 1px solid #eee;
     background-color: #fff;
-    padding: 20px;
-    border-radius:5px;
-    .main-carousel{
+    overflow: hidden;
 
-        img{
-            width: 100%;
+    .main-topics {
+        margin-bottom: 20px;
+        li.ant-list-item{
+            padding-left: 10px;
+        }
+        ul.ant-pagination{
+            margin-right:10px;
         }
     }
 
-    ul.main-ul li{
-        margin-bottom:10px;
-        padding: 10px;
-        border-bottom: 1px solid #eee;
-    }
-}
-
-aside{
-    /*border-left: 1px solid #00bbee;*/
-    padding: 0 10px;
 }
 
 /* For demo */

@@ -102,8 +102,7 @@ function Home(props) {
                         </div>
                     </Carousel>
                     <List
-                        bordered
-                        style={{marginTop:'20px'}}
+                        className="main-topics"
                         itemLayout="vertical"
                         size="large"
                         pagination={{

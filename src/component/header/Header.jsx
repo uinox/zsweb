@@ -11,7 +11,7 @@ import storageUtils from "../../utils/storageUtils";
 // import MenuList from '../config/menuConfig';
 
 const { Search } = Input;
-const { SubMenu } = Menu;
+// const { SubMenu } = Menu;
 
 function Header(props) {
 
@@ -49,10 +49,10 @@ function Header(props) {
     return (
         <header className="header">
             <Row className="menu">
-                <Col xs={4} sm={3} md={2} lg={1} xl={1} xxl={1}>
+                <Col xs={0} sm={3} md={2} lg={1} xl={1} xxl={1}>
                     <img className="logo" src={logo} alt={"mitgo"}/>
                 </Col>
-                <Col xs={20} sm={10} md={12} lg={13} xl={14} xxl={15}>
+                <Col xs={18} sm={10} md={12} lg={13} xl={14} xxl={15}>
                     <Menu
                         onClick={handle}
                         selectedKeys={[path]}
@@ -71,40 +71,15 @@ function Header(props) {
                         <Menu.Item key="/article">
                             <Link to="/article">文章</Link>
                         </Menu.Item>
-                        <SubMenu
-                            key="sub1"
-                            title={
-                                <span className="submenu-title-wrapper">
-                                  生活
-                                </span>
-                            }
-                        >
-                            <Menu.ItemGroup title="视频">
-                                <Menu.Item key="/youku">
-                                    <Link to="/youku">优酷</Link>
-                                </Menu.Item>
-                                <Menu.Item key="/toudu">
-                                    <Link to="/toudu">土豆</Link>
-                                </Menu.Item>
-                                </Menu.ItemGroup>
-                                <Menu.ItemGroup title="游戏">
-                                <Menu.Item key="/glory">
-                                    <Link to="/glory">王者荣耀</Link>
-                                </Menu.Item>
-                                <Menu.Item key="/lol">
-                                    <Link to="/lol">英雄联盟</Link>
-                                </Menu.Item>
-                            </Menu.ItemGroup>
-                        </SubMenu>
                         <Menu.Item key="/tech">
-                            <Link to="/tech">技术</Link>
+                            <Link to="/tech">视频</Link>
                         </Menu.Item>
                     </Menu>
                 </Col>
-                <Col xs={24} sm={5} md={4} lg={5} xl={5} xxl={5}>
+                <Col xs={0} sm={5} md={4} lg={5} xl={5} xxl={5}>
                     <Search className="search" placeholder="请输入" size="small" onSearch={value => console.log(value)} />
                 </Col>
-                <Col xs={24} sm={6} md={6} lg={5} xl={4} xxl={3}>
+                <Col xs={6} sm={6} md={6} lg={5} xl={4} xxl={3}>
                     {
                         username?
                             <div className="header-user">

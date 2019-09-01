@@ -1,7 +1,25 @@
 .article-card{
-  border-radius: 5px;
-  .article-card-table{
-    min-width: 740px;
+  .ant-card-head{
+    padding: 10px;
+    .ant-card-head-title,.ant-card-extra{
+      padding: 0;
+    }
   }
+  .ant-card-body{
+    padding: 10px;
+    .article-card-table{
+      min-width: 600px;
+      .ant-table-thead > tr > th{
+        padding: 10px 0;
+      }
+      .ant-table-tbody > tr > td{
+        padding: 10px 0;
+        word-wrap:break-word;
+        white-space:normal;
+        word-break:break-all;
+      }
+    }
+  }
+
 
 }

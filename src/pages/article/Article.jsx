@@ -55,7 +55,7 @@ class Article extends Component {
                         <Column width="10%" align="center" title="#" dataIndex="Id" key="Id"
                                 render={(text,record,index)=>`${index+1}`}
                         />
-                        <Column width="25%" align="center" title="标题" dataIndex="Title" key="action1"
+                        <Column width="25%" align="left" title="标题" dataIndex="Title" key="action1"
                                 render = {(dataIndex,content)=>(
                                     <Link to={`/article/view?tid=${content.Id}`}>
                                         {dataIndex}

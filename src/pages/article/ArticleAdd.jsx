@@ -47,7 +47,6 @@ class ArticleAdd extends Component {
                 formData.append('content',values.content.toHTML()||"");
                 formData.append('label',values.label||"");
                 formData.append('author',"bbbbbb");
-                console.log(formData.get('attachment'),formData.get('title'),formData.get('category'),formData.get('author'));
                 fetch("/apis/topicat/add",{
                     method:"POST",
                     body:formData

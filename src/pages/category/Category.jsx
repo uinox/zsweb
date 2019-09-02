@@ -66,7 +66,7 @@ class Category extends Component{
                                         { required: true, message: '请输入类名!' },
                                         { min:2,message:'类名至少两位'},
                                         { max:10,message:'类名至多十位'},
-                                        { pattern:/[/u4e00\-/u9fa5]{2,10}$/,message:'用户名必须是中文'}
+                                        { pattern:/[\u4e00-\u9fa5]/,message:'用户名必须是中文'}
                                     ],
                                 })(
                                     <Input

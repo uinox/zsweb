@@ -40,22 +40,24 @@ class ArticleAdd extends Component {
             if (!err) {
                 this.setState({loading:true});
                 let formData = new FormData();
-                formData.append('attachment',this.refs.attachment.files[0]);
-                formData.append('title',values.title);
-                formData.append('category',values.select);
-                formData.append('content',values.content.toHTML());
-                formData.append('label',values.label);
 
+                formData.append('attachment',this.refs.attachment.files[0]||"");
+                formData.append('title',values.title||"");
+                formData.append('category',values.select||"");
+                formData.append('content',values.content.toHTML()||"");
+                formData.append('label',values.label||"");
+                formData.append('author',"bbbbbb");
+                console.log(formData.get('attachment'),formData.get('title'),formData.get('category'),formData.get('author'));
                 fetch("/apis/topicat/add",{
                     method:"POST",
                     body:formData
 
                 }).then(res=>res.json())
-                .then(result=>{
-                    if(result.Code === "200"){
-                        this.props.history.push('/article');
-                    }
-                });
+                    .then(result=>{
+                        if(result.Code === "200"){
+                            this.props.history.push('/article');
+                        }
+                    });
             }
         });
     };

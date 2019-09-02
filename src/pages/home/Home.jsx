@@ -18,7 +18,7 @@ function Home(props) {
         topics,
         dispatch,
     } = props;
-    console.log(props);
+
 
     useEffect(()=>{
         fetch('/apis/homeat')

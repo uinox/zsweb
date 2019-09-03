@@ -7,10 +7,7 @@ import {formatStr} from '../../utils/dataUtils';
 import './Home.less';
 import {connect} from "react-redux";
 import {setCategories, setTopics} from "../../redux/actions";
-import ff1 from '../../assets/images/ff1.png';
-import ff2 from '../../assets/images/ff2.png';
-import ff3 from '../../assets/images/ff3.png';
-import ff4 from '../../assets/images/ff4.png';
+
 
 function Home(props) {
     const {
@@ -89,16 +86,16 @@ function Home(props) {
                 <main>
                     <Carousel className="main-carousel" autoplay>
                         <div>
-                            <img src={ff1} style={{width:'100%',height:'100px'}} alt=""/>
+                            <img src="/apis/attachment/ff1.png" style={{width:'100%',height:'100px'}} alt=""/>
                         </div>
                         <div>
-                            <img src={ff2} style={{width:'100%',height:'100px'}} alt=""/>
+                            <img src="/apis/attachment/ff2.png" style={{width:'100%',height:'100px'}} alt=""/>
                         </div>
                         <div>
-                            <img src={ff3} style={{width:'100%',height:'100px'}} alt=""/>
+                            <img src="/apis/attachment/ff3.png" style={{width:'100%',height:'100px'}} alt=""/>
                         </div>
                         <div>
-                            <img src={ff4} style={{width:'100%',height:'100px'}} alt=""/>
+                            <img src="/apis/attachment/ff4.png" style={{width:'100%',height:'100px'}} alt=""/>
                         </div>
                     </Carousel>
                     <List
@@ -122,7 +119,7 @@ function Home(props) {
                                 ]}
                             >
                                 <List.Item.Meta
-                                    avatar={<Avatar src='https://zos.alipayobjects.com/rmsportal/ODTLcjxAfvqbxHnVXCYX.png' />}
+                                    avatar={<Avatar src='/apis/attachment/user.png' />}
                                     title={<Link to={`/article/view?tid=${item.Id}`}>{item.Title}</Link>}
                                     description={<a href="##" onClick={()=>selectTopics('label',item.Labels.match(/[^#$]+/g)[0])}>{item.Labels.match(/[^#$]+/g)[0]}</a>}
                                 />

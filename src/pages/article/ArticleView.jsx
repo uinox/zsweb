@@ -100,21 +100,21 @@ class ArticleView extends Component {
     };
 
     render() {
-        const { topic,replies, submitting, value,username } = this.state;
+        const { topic,replies, submitting, value } = this.state;
         return (
             <Row>
                 <Col xs={0} md={8} lg={6}>
                     <Card  className="article-view-user" title={
                         <div>
-                            <Avatar src="https://zos.alipayobjects.com/rmsportal/ODTLcjxAfvqbxHnVXCYX.png" />
-                            <LinkButton style={{marginLeft:"10px"}}>{username}</LinkButton>
+                            <Avatar src="/apis/attachment/user.png" />
+                            <LinkButton style={{marginLeft:"10px"}}>{topic.Author}</LinkButton>
                         </div>
 
                     } extra={<Button type="primary" style={{ height:"20px",lineHeight:"18px" }}>关注</Button>}>
                         <ul className="article-view-user-basic" style={{display:"flex",alignItems:"center",}}>
                             <li>
                                 <LinkButton style={{width:"14px"}}>博文</LinkButton>
-                                <p style={{fontSize:"12px"}}>10</p>
+                                <p style={{fontSize:"12px"}}>3</p>
                             </li>
                             <li>
                                 <LinkButton style={{width:"14px"}}>粉丝</LinkButton>
@@ -122,11 +122,11 @@ class ArticleView extends Component {
                             </li>
                             <li>
                                 <LinkButton style={{width:"14px"}}>喜欢</LinkButton>
-                                <p style={{fontSize:"12px"}}>10</p>
+                                <p style={{fontSize:"12px"}}>5</p>
                             </li>
                             <li>
                                 <LinkButton style={{width:"14px"}}>评论</LinkButton>
-                                <p style={{fontSize:"12px"}}>10</p>
+                                <p style={{fontSize:"12px"}}>4</p>
                             </li>
                         </ul>
                     </Card>
@@ -138,7 +138,7 @@ class ArticleView extends Component {
                     <div className="article-view-topic">
                         <div className="article-view-main-title">
                             <h2><Icon type="check-circle" theme="twoTone" twoToneColor="#52c41a" style={{marginRight:"10px"}}/>{topic.Title}</h2>
-                            <p style={{fontSize:"12px"}}><span>{formatStr(topic.Created)}</span>&nbsp;&nbsp;<LinkButton>{username}</LinkButton>&nbsp;&nbsp;<span>浏览数：{topic.Views}</span></p>
+                            <p style={{fontSize:"12px"}}><span>{formatStr(topic.Created)}</span>&nbsp;&nbsp;<LinkButton>{topic.Author}</LinkButton>&nbsp;&nbsp;<span>浏览数：{topic.Views}</span></p>
                         </div>
                         <div className="article-view-main-title-content">
                             <div dangerouslySetInnerHTML={{__html:topic.Content}} />
@@ -165,7 +165,7 @@ class ArticleView extends Component {
                                                     <span key="comment-list-reply-to-0">Reply to</span>
                                                 }
                                                 author={item.Name}
-                                                avatar={'https://zos.alipayobjects.com/rmsportal/ODTLcjxAfvqbxHnVXCYX.png'}
+                                                avatar={'/apis/attachment/user.png'}
                                                 content={
                                                     <div style={{display:"flex",alignItems:"center"}}>
                                                         <p style={{flex:1,marginLeft:"20px"}}>{item.Content}</p>
@@ -190,7 +190,7 @@ class ArticleView extends Component {
                                 className="article-comment"
                                 avatar={
                                     <Avatar
-                                        src="https://zos.alipayobjects.com/rmsportal/ODTLcjxAfvqbxHnVXCYX.png"
+                                        src="/apis/attachment/user.png"
                                         alt="Han Solo"
                                     />
                                 }

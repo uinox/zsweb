@@ -1,11 +1,13 @@
 import React, { Component } from 'react';
 import {Link} from "react-router-dom";
-import {Card, Table,Button,Icon} from "antd";
+import {Card, Table,Button,Icon, Modal} from "antd";
 import LinkButton from "../../component/link-button";
 import {reqGetTopics,reqDeleteTopic} from "../../api/index";
 import {formatStr} from '../../utils/dataUtils';
 
 import './Article.less'
+import memoryUtils from "../../utils/memoryUtils";
+const { confirm } = Modal;
 
 const { Column} = Table;
 
@@ -23,26 +25,64 @@ class Article extends Component {
     };
 
     deleteTopic = async (id) => {
-        const result = await reqDeleteTopic(id);
-        if(result.Code === "200"){
-            this.getTopics();
+        const {username} = memoryUtils.user;
+        if(!username){
+            this.goLogin()
+        }else{
+            const result = await reqDeleteTopic(id);
+            if(result.Code === "200"){
+                this.getTopics();
+            }
+        }
+
+    };
+
+    addTopic = () => {
+        const {username} = memoryUtils.user;
+        if(!username){
+            this.goLogin()
+        }else{
+            this.props.history.push('/article/add')
+        }
+
+
+    };
+    editTopic = (id) => {
+        const {username} = memoryUtils.user;
+        if(!username){
+            this.goLogin()
+        }else{
+            this.props.history.push(`/article/edit?tid=${id}`)
         }
     };
 
     componentDidMount = () => {
         this.getTopics();
     };
+    goLogin(){
+        confirm({
+            title: '提示',
+            okText:'登录',
+            cancelText:'取消',
+            content: '请先登录！',
+            onOk: ()=> {
+
+                this.props.history.replace("/login")
+            },
+            onCancel() {
+                // console.log('取消');
+            },
+        });
+
+    }
 
     render(){
         const topics = this.state.topics;
 
         return (
             <Card className="article-card" title="文章列表" extra={
-                <Button type="primary">
-                    <Link to="/article/add">
-                        <Icon type="plus" />新增
-                    </Link>
-
+                <Button type="primary" onClick={this.addTopic}>
+                    <Icon type="plus" />新增
                 </Button>
             }>
                 <div style={{width:'100%',overflow:'auto'}}>
@@ -77,9 +117,9 @@ class Article extends Component {
                         <Column width="20%" align="center" title="操作" key="action"
                                 render={(dataIndex,context) => (
                                     <div>
-                                        <Link to={`/article/edit?tid=${context.Id}`}>
+                                        <LinkButton onClick={()=>this.editTopic(context.Id)}>
                                             编辑
-                                        </Link>&nbsp;
+                                        </LinkButton>&nbsp;
                                         <LinkButton onClick={()=>this.deleteTopic(context.Id)}>
                                             删除
                                         </LinkButton>

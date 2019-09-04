@@ -1,9 +1,11 @@
 import React, {Component} from 'react';
-import {Button, Form, Input,Table,Icon,Row,Col} from 'antd';
+import {Button, Form, Input, Table, Icon, Row, Col, Modal} from 'antd';
 import {reqCategories,reqAddCategories,reqRemoveCategories} from '../../api/index';
 import LinkButton from "../../component/link-button";
+import memoryUtils from "../../utils/memoryUtils";
 import './Category.less';
 const { Column} = Table;
+const { confirm } = Modal;
 
 class Category extends Component{
 
@@ -26,14 +28,35 @@ class Category extends Component{
             this.setState({categories: result});
         }
     };
-    removeCategories =async (cateId,type) =>{
+    deleteCategories =async (cateId,type) =>{
         const result = await reqRemoveCategories(cateId,type);
         if (result) {
             this.setState({categories: result});
         }
     };
-    handleRemoveCate = (id)=>{
-        this.removeCategories(String(id),'del');
+    goLogin(){
+        confirm({
+            title: '提示',
+            okText:'登录',
+            cancelText:'取消',
+            content: '请先登录！',
+            onOk: ()=> {
+
+                this.props.history.replace("/login")
+            },
+            onCancel() {
+                // console.log('取消');
+            },
+        });
+
+    }
+    handleDeleteCate = (id)=>{
+        const {username} = memoryUtils.user;
+        if(!username){
+            this.goLogin()
+        }else {
+            this.deleteCategories(String(id), 'del');
+        }
     };
 
     handleSubmit =(e)=>{
@@ -41,7 +64,12 @@ class Category extends Component{
         this.props.form.validateFields((err, values) => {
             if (!err) {
                 const {cate} = values;
-                this.addCategories(cate,'add');
+                const {username} = memoryUtils.user;
+                if(!username){
+                    this.goLogin()
+                }else {
+                    this.addCategories(cate, 'add');
+                }
             }
         });
     };
@@ -97,7 +125,7 @@ class Category extends Component{
                     <Column align="center" title="文章总数" dataIndex="TopicCount" key="TopicCount"/>
                     <Column align="center" title="操作" key="action"
                         render={(dataIndex) => (
-                            <LinkButton onClick={()=>this.handleRemoveCate(dataIndex.Id)}>
+                            <LinkButton onClick={()=>this.handleDeleteCate(dataIndex.Id)}>
                                 删除
                             </LinkButton>
                         )}

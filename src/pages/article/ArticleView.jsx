@@ -1,17 +1,13 @@
 import React,{Component} from "react";
-import {Tooltip,Icon,Comment,Avatar,Row,Col,Card,Button,Calendar,List,Input,Form} from "antd";
+import {Tooltip, Icon, Comment, Avatar, Row, Col, Card, Button, Calendar, List, Input, Form, Modal, message} from "antd";
 import './ArticleView.less';
 import memoryUtils from "../../utils/memoryUtils";
 import LinkButton from "../../component/link-button";
 import {reqViewTopic,reqAddReply,reqDeleteReply} from "../../api";
 import {formatStr} from '../../utils/dataUtils';
 
-// import moment from 'moment';
-
 const { TextArea } = Input;
-
-
-
+const { confirm } = Modal;
 
 class ArticleView extends Component {
 
@@ -72,11 +68,27 @@ class ArticleView extends Component {
         const {username} = memoryUtils.user;
         this.setState({username:username})
     };
+    goLogin(){
+        confirm({
+            title: '提示',
+            okText:'登录',
+            cancelText:'取消',
+            content: '请先登录！',
+            onOk: ()=> {
 
+                this.props.history.replace("/login")
+            },
+            onCancel() {
+                // console.log('取消');
+            },
+        });
+
+    }
 
     handleSubmit = () => {
         if (!this.state.value) {
-            return;
+            message.error("请输入内容");
+            return ;
         }
 
         const reply = {
@@ -84,8 +96,12 @@ class ArticleView extends Component {
             "nickname":this.state.username,
             "content":this.state.value,
         };
-
-        this.addReply(reply);
+        const username = this.state.username;
+        if(!username){
+            this.goLogin()
+        }else{
+            this.addReply(reply);
+        }
 
         this.setState({
             value: null,

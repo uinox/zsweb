@@ -1,5 +1,5 @@
 import React, {Component} from 'react';
-import {Button, Form, Input, Table, Icon, Row, Col, Modal} from 'antd';
+import {Button, Form, Input, Table, Icon, Row, Col, Modal, message} from 'antd';
 import {reqCategories,reqAddCategories,reqRemoveCategories} from '../../api/index';
 import LinkButton from "../../component/link-button";
 import memoryUtils from "../../utils/memoryUtils";
@@ -54,7 +54,9 @@ class Category extends Component{
         const {username} = memoryUtils.user;
         if(!username){
             this.goLogin()
-        }else {
+        }else if(username !== "admin"){
+            message.error("请登录管理员账号！")
+        } else {
             this.deleteCategories(String(id), 'del');
         }
     };
@@ -67,7 +69,9 @@ class Category extends Component{
                 const {username} = memoryUtils.user;
                 if(!username){
                     this.goLogin()
-                }else {
+                }else if(username !== "admin"){
+                    message.error("请登录管理员账号！")
+                } else {
                     this.addCategories(cate, 'add');
                 }
             }

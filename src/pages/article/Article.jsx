@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import {Link} from "react-router-dom";
-import {Card, Table,Button,Icon, Modal} from "antd";
+import {Card, Table,Button,Icon, Modal, message} from "antd";
 import LinkButton from "../../component/link-button";
 import {reqGetTopics,reqDeleteTopic} from "../../api/index";
 import {formatStr} from '../../utils/dataUtils';
@@ -24,10 +24,12 @@ class Article extends Component {
         }
     };
 
-    deleteTopic = async (id) => {
+    deleteTopic = async (id,author) => {
         const {username} = memoryUtils.user;
         if(!username){
             this.goLogin()
+        }else if(username !== author){
+            message.error("您非作者本人，没有操作权限")
         }else{
             const result = await reqDeleteTopic(id);
             if(result.Code === "200"){
@@ -47,10 +49,13 @@ class Article extends Component {
 
 
     };
-    editTopic = (id) => {
+    editTopic = (id,author) => {
         const {username} = memoryUtils.user;
-        if(!username){
+        console.log(id);
+        if (!username) {
             this.goLogin()
+        } else if (username !== author) {
+            message.error("您非作者本人，没有权限")
         }else{
             this.props.history.push(`/article/edit?tid=${id}`)
         }
@@ -117,10 +122,10 @@ class Article extends Component {
                         <Column width="20%" align="center" title="操作" key="action"
                                 render={(dataIndex,context) => (
                                     <div>
-                                        <LinkButton onClick={()=>this.editTopic(context.Id)}>
+                                        <LinkButton onClick={()=>this.editTopic(context.Id,context.Author)}>
                                             编辑
                                         </LinkButton>&nbsp;
-                                        <LinkButton onClick={()=>this.deleteTopic(context.Id)}>
+                                        <LinkButton onClick={()=>this.deleteTopic(context.Id,context.Author)}>
                                             删除
                                         </LinkButton>
                                     </div>

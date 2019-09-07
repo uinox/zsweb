@@ -82,7 +82,7 @@
   "proxy": "https://www.tmubei.com",
   "scripts": {
     "start": "react-app-rewired start",
-    "build": "react-app-rewired build",
+    "build": "GENERATE_SOURCEMAP=false react-app-rewired build",
     "test": "react-app-rewired test"
   },
   "eslintConfig": {

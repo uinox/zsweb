@@ -17,7 +17,6 @@ function App(){
 
             </Switch>
         </Route>
-
     </BrowserRouter>
   );
 }

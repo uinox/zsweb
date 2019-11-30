@@ -8,7 +8,6 @@ import './Home.less';
 import {connect} from "react-redux";
 import {setCategories, setTopics} from "../../redux/actions";
 
-
 function Home(props) {
     const {
         categories,
@@ -86,16 +85,16 @@ function Home(props) {
                 <main>
                     <Carousel className="main-carousel" autoplay>
                         <div>
-                            <img src="/apis/attachment/ff1.png" style={{width:'100%',height:'100px'}} alt=""/>
+                            <img src="/apis/attachment/ff1.png" alt=""/>
                         </div>
                         <div>
-                            <img src="/apis/attachment/ff2.png" style={{width:'100%',height:'100px'}} alt=""/>
+                            <img src="/apis/attachment/ff2.png" alt=""/>
                         </div>
                         <div>
-                            <img src="/apis/attachment/ff3.png" style={{width:'100%',height:'100px'}} alt=""/>
+                            <img src="/apis/attachment/ff3.png" alt=""/>
                         </div>
                         <div>
-                            <img src="/apis/attachment/ff4.png" style={{width:'100%',height:'100px'}} alt=""/>
+                            <img src="/apis/attachment/ff4.png" alt=""/>
                         </div>
                     </Carousel>
                     <List

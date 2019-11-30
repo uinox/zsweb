@@ -1,5 +1,6 @@
 import React, {Fragment} from 'react';
 import {Route,Switch,Redirect} from 'react-router-dom';
+// import PropTypes from 'prop-types';
 import './Admin.less';
 
 import Header from '../../component/header/Header.jsx';
@@ -17,11 +18,13 @@ import Glory from "../life/Glory";
 import Lol from "../life/Lol";
 
 function Admin(){
+
     return (
         <Fragment>
             <Header/>
             <div className="admin">
                 <Switch>
+                    <Route path='/' component={Home} />
                     <Route path='/home' component={Home} />
                     <Route path='/category' component={Category} />
                     <Route path='/article' >
@@ -37,7 +40,7 @@ function Admin(){
                     <Route path='/glory' component={Glory}/>
                     <Route path='/lol' component={Lol}/>
                     <Route path='/tech' component={Tech} />
-                    <Redirect to='/home'/>
+                    <Redirect to='/'/>
                 </Switch>
             </div>
             <Footer />

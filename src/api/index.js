@@ -14,6 +14,9 @@ export const reqLogin = (name,password) => ajax('/apis/loginat',{name,password},
 //注册
 export const reqRegister = (user) => ajax('/apis/register',user,'POST');
 
+//Home获取文章和分类
+export const reqTopicAndCategory = () => ajax('/apis/homeat');
+
 //获取分类列表
 export const reqCategories = () => ajax('/apis/categoryAt',{},'POST');
 

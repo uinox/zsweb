@@ -1,10 +1,18 @@
 import {
+    ACTION_SET_LOGIN_USER,
     ACTION_SET_IS_LOGIN_VISIBLE,
     ACTION_SET_IS_REGISTER_VISIBLE,
 
     ACTION_SET_CATEGORIES,
     ACTION_SET_TOPICS,
 } from "./actions-types";
+
+export function setLoginUser(loginUser){
+    return {
+        type:ACTION_SET_LOGIN_USER,
+        payload:loginUser,
+    }
+}
 
 export function setCategories(categories){
     return {

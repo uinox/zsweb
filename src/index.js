@@ -9,9 +9,9 @@ import memoryUtils from "./utils/memoryUtils";
 
 const user = storageUtils.getUser();
 memoryUtils.user = user;
-
+let a =2;
 ReactDOM.render(
-    <Provider store={store}>
+    <Provider store={store} value={a}>
         <App />
     </Provider>
 , document.getElementById('root'));

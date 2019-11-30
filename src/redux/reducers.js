@@ -1,4 +1,5 @@
 import {
+    ACTION_SET_LOGIN_USER,
     ACTION_SET_IS_LOGIN_VISIBLE,
     ACTION_SET_IS_REGISTER_VISIBLE,
 
@@ -7,6 +8,15 @@ import {
 } from './actions-types';
 
 export default {
+    loginUser(state='',action){
+        const {type,payload} = action;
+        switch (type) {
+            case ACTION_SET_LOGIN_USER:
+                return payload;
+            default:
+        }
+        return state;
+    },
     categories(state=[],action){
         const {type,payload} = action;
         switch (type) {

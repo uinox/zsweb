@@ -13,12 +13,14 @@ if(navigator.userAgent.indexOf('MSIE 9.0') !== -1){
 function App(){
   return (
     <BrowserRouter>
-        <Switch>
-            <Route path='/' exact component={Admin} />
-            <Route path='/login' component={Login} />
-            <Route path='/register' component={Register} />
-        </Switch>
+        <Route>
+            <Switch>
+                <Route path='/login' component={Login} />
+                <Route path='/register' component={Register} />
+                <Route path='/' component={Admin} />
 
+            </Switch>
+        </Route>
     </BrowserRouter>
   );
 }

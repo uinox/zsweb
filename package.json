@@ -79,7 +79,8 @@
     "webpack": "4.39.1",
     "webpack-dev-server": "3.2.1",
     "webpack-manifest-plugin": "2.0.4",
-    "workbox-webpack-plugin": "4.3.1"
+    "workbox-webpack-plugin": "4.3.1",
+    "xxx": "0.0.1"
   },
   "proxy": "https://www.tmubei.com",
   "scripts": {

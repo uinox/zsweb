@@ -18,7 +18,6 @@ class Login extends React.Component {
                 const {name,password} = values;
                 const result = await reqLogin(name,password);
                 const username = result.Name;
-
                 if(result.Status === 200){
                     message.success('登录成功');
                     //保存data
@@ -26,6 +25,13 @@ class Login extends React.Component {
                     storageUtils.saveUser({username});
                     //跳转到管理页面
                     this.props.history.replace('/')
+                }else if(result.Status === 403){
+                    this.props.form.setFields({
+                        password: {
+                          value: values.password,
+                          errors: [new Error('密码错误')],
+                        },
+                    });
                 }
             }
         });

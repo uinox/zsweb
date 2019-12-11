@@ -1,4 +1,3 @@
-<<<<<<< HEAD
 
 ## Available Scripts
 
@@ -35,7 +34,5 @@ You don’t have to ever use `eject`. The curated feature set is suitable for sm
 
 ### `npm run build` fails to minify
 
-=======
 # zsweb
 react project
->>>>>>> 2fa5a0133ffc706891aa4178cc69853a09562e2e

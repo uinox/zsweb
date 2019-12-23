@@ -24,7 +24,7 @@ function Admin(){
             <Header/>
             <div className="admin">
                 <Switch>
-                    <Route path='/' component={Home} />
+                    {/* <Route path='/' component={Home} /> */}
                     <Route path='/home' component={Home} />
                     <Route path='/category' component={Category} />
                     <Route path='/article' >
@@ -40,7 +40,7 @@ function Admin(){
                     <Route path='/glory' component={Glory}/>
                     <Route path='/lol' component={Lol}/>
                     <Route path='/tech' component={Tech} />
-                    <Redirect to='/'/>
+                    <Redirect to='/home'/>
                 </Switch>
             </div>
             <Footer />

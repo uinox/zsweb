@@ -72,7 +72,7 @@ function Header(props) {
                             <Link to="/article">文章</Link>
                         </Menu.Item>
                         <Menu.Item key="/tech">
-                            <Link to="/tech">视频</Link>
+                            <Link to="/tech">视觉</Link>
                         </Menu.Item>
                     </Menu>
                 </Col>

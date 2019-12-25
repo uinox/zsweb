@@ -9,6 +9,8 @@ function Test1(){
 
         let renderer = new THREE.WebGLRenderer();
         const canvasTest = document.querySelector(".canvas");
+        canvasTest.innerHTML="";
+
         // renderer.setSize( window.innerWidth/2, window.innerHeight/2 );
         renderer.setSize( 700, 400 )
         canvasTest.appendChild( renderer.domElement );

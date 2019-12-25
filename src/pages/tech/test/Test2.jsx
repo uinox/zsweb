@@ -5,6 +5,7 @@ import "./Test.less"
 function Test2(){
     const init = () => {
         const canvasTest = document.querySelector(".canvas");
+        canvasTest.innerHTML="";
 
         let renderer = new THREE.WebGLRenderer();
         renderer.setSize( 700, 400 );

@@ -20,7 +20,7 @@ function Test4(){
         function init() {
 
             var container = document.querySelector(".canvas");
-
+            container.innerHTML="";
             //
 
             camera = new THREE.PerspectiveCamera( 50, window.innerWidth / window.innerHeight, 1, 1000 );

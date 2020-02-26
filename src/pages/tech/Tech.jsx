@@ -19,7 +19,7 @@ function  Tech(props){
                             <li><Link to="/tech/test1">test1</Link></li>
                             <li><Link to="/tech/test2">test2-line</Link></li>
                             <li><Link to="/tech/test3">test3-loder-fbx</Link></li>
-                            <li><Link to="/tech/test4">test3-loder-svg</Link></li>
+                            <li><Link to="/tech/test4">test4-loder-svg</Link></li>
                         </ul>
                     </div>
                 </Col>
